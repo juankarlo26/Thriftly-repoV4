@@ -1,5 +1,5 @@
-# Server-repo-thriftly
- Backend side development
+# thriftly
+Backend side
 
 ## Getting Started
 
@@ -16,12 +16,19 @@ Installing NPM modules on both client and server folders
 Execute these commands from the project directory
 
 ```
-cd client && npm install
+cd client-repo 
+
+npm install
 ```
 
 ```
-cd server && npm install
+cd server-repo
+
+npm install
 ```
+Change the serverIP to your local LAN IPv4 address at client-repo/constants/network
+
+serverip: "http:// -local IP- :3000",
 
 ### Running the app
 
@@ -35,5 +42,5 @@ and open another terminal on client directory
 ```
 npm run
 ```
-
+Access the web app at http://localhost:19000/
 Access the backend at http://localhost:3000/
