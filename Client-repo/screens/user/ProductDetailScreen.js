@@ -11,6 +11,7 @@ import { Ionicons } from "@expo/vector-icons";
 import cartIcon from "../../assets/icons/cart_beg.png";
 import { colors, network } from "../../constants";
 import CustomButton from "../../components/CustomButton";
+import CustomInput from "../../components/CustomInput";
 import { useSelector, useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actionCreaters from "../../states/actionCreaters/actionCreaters";
@@ -21,7 +22,7 @@ const ProductDetailScreen = ({ navigation, route }) => {
   const { product } = route.params;
   const cartproduct = useSelector((state) => state.product);
   const dispatch = useDispatch();
-
+  const [price, setPrice] = useState("");
   const { addCartItem } = bindActionCreators(actionCreaters, dispatch);
 
   //method to add item to cart(redux)
@@ -278,7 +279,21 @@ const ProductDetailScreen = ({ navigation, route }) => {
                   <Text style={styles.incButtonText}>+</Text>
                 </TouchableOpacity>
               </View>
+              <View style={styles.ThriftePriceContainer}>
+              <CustomInput
+            value={price}
+            setValue={setPrice}
+            placeholder={"Thrifted Price"}
+            keyboardType={"number-pad"}
+            placeholderTextColor={colors.muted}
+            radius={15}
+          />
+
+              </View>
+
             </View>
+
+           
             <View style={styles.productDetailContainer}>
               <View style={styles.productSizeOptionContainer}>
               {/* <Text style={styles.secondaryTextSm}>Price:</Text>
@@ -347,7 +362,7 @@ const styles = StyleSheet.create({
   },
   productImageContainer: {
     width: "100%",
-    height:"50%",
+    height:"45%",
     backgroundColor: colors.light,
     flexDirecion: "row",
     alignItems: "center",
@@ -356,7 +371,7 @@ const styles = StyleSheet.create({
   },
   productInfoContainer: {
     width: "100%",
-    height:"50%",
+    height:"55%",
     backgroundColor: colors.white,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
@@ -387,10 +402,10 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
      backgroundColor: colors.gray,
     width: "100%",
-    height: 100,
+    height: 70,
   },
   productButtonContainer: {
-    padding: 20,
+    // padding: 20,
     paddingLeft: 40,
     paddingRight: 40,
     backgroundColor: colors.white,
@@ -478,11 +493,22 @@ const styles = StyleSheet.create({
     display: "flex",
     width: "100%",
     flexDirection: "row",
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingVertical: 10,
-    marginBottom: 10,
+    // marginBottom: 10,
+    // backgroundColor: colors.gray,
+  },
+  ThriftePriceContainer: {
+    display: "flex",
+    width: "70%",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    // paddingVertical: 10,
+    // marginBottom: 10,
     // backgroundColor: colors.gray,
   },
   iconContainer: {

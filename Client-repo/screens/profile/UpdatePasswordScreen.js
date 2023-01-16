@@ -70,6 +70,7 @@ const UpdatePasswordScreen = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
       <View style={styles.screenNameContainer}>
+      
         <View>
           <Text style={styles.screenNameText}>Update Password</Text>
         </View>
@@ -78,7 +79,9 @@ const UpdatePasswordScreen = ({ navigation, route }) => {
             Your new password must be different from previous used password
           </Text>
         </View>
+        <View style={styles.division}></View>
       </View>
+      
       <View style={styles.formContainer}>
         <CustomAlert message={error} type={alertType} />
         <CustomInput
@@ -86,18 +89,21 @@ const UpdatePasswordScreen = ({ navigation, route }) => {
           setValue={setCurrentPassword}
           placeholder={"Current Password"}
           secureTextEntry={true}
+          radius={15}
         />
         <CustomInput
           value={newPassword}
           setValue={setNewPassword}
           placeholder={"New Password"}
           secureTextEntry={true}
+          radius={15}
         />
         <CustomInput
           value={confirmPassword}
           setValue={setCconfirmPassword}
           placeholder={"Confirm New Password"}
           secureTextEntry={true}
+          radius={15}
         />
       </View>
       <CustomButton
@@ -135,13 +141,15 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   screenNameText: {
-    fontSize: 30,
-    fontWeight: "800",
-    color: colors.muted,
+    fontSize: 22,
+    fontFamily: 'Montserrat-SemiBold',
+    // color: colors.muted,
   },
   screenNameParagraph: {
     marginTop: 5,
-    fontSize: 15,
+    fontSize: 13,
+    color: colors.muted,
+    fontFamily: 'Montserrat-Medium',
   },
   formContainer: {
     marginTop: 10,
@@ -151,5 +159,16 @@ const styles = StyleSheet.create({
     display: "flex",
     width: "100%",
     flexDirecion: "row",
+  },
+  division: {
+    width: "20%",
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    height: "5%",
+    borderRadius: 30,
+    backgroundColor: colors.primary,
+    marginTop: 20,
+    // padding:15
   },
 });

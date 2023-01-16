@@ -7,6 +7,7 @@ const ProductCard = ({
   name,
   price,
   image,
+  description,
   quantity,
   onPress,
   onPressSecondary,
@@ -24,7 +25,7 @@ const ProductCard = ({
         <View>
           <Text style={styles.secondaryTextSm}>{`${name.substring(
             0,
-            10
+            11
           )}..`}</Text>
           <Text style={styles.primaryTextSm}>₱ {price}</Text>
         </View>
@@ -53,19 +54,19 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
     width: 150,
-    height: 200,
+    height: 220,
     borderRadius: 10,
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
     padding: 5,
-    elevation: 5,
+    // elevation: 5,
   },
   imageContainer: {
     backgroundColor: colors.light,
     width: "100%",
-    height: 140,
+    height: 160,
     borderRadius: 10,
     display: "flex",
     flexDirection: "column",
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   productImage: {
-    height: 140,
+    height: 160,
     width: 140,
     borderRadius: 10,
     resizeMode: "contain",
@@ -86,15 +87,18 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginTop: 5,
     padding: 5,
   },
   secondaryTextSm: {
-    fontSize: 15,
+    fontSize: 12,
+    // width: "70%",
     fontFamily: 'Montserrat-SemiBold',
+    color: colors.black,
   },
   primaryTextSm: {
-    fontSize: 15,
-    fontFamily: 'Montserrat-Bold',
+    fontSize: 14,
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.black,
   },
   iconContainer: {

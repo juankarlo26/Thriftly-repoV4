@@ -48,6 +48,7 @@ const category = [
     title: "Groceries",
     image: require("../../assets/icons/grocery.png"),
   },
+  
 ];
 
 const slides = [

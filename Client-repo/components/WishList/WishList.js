@@ -20,14 +20,14 @@ const WishList = ({
         <View style={styles.imageContainer}>
           <Image
             source={{ uri: image }}
-            style={{ height: 40, width: "auto", resizeMode: "contain" }}
+            style={{ height: 50, width: "auto", resizeMode: "contain" }}
           />
         </View>
         <View style={styles.categoryInfo}>
           <Text style={styles.categoryTitle}>{title}</Text>
           <Text style={styles.categoryDescription}>{`${description.substring(
             0,
-            30
+            25
           )}..`}</Text>
         </View>
       </View>
@@ -39,9 +39,9 @@ const WishList = ({
               onPress={() => handleChangeState()}
             >
               {onWishlist == false ? (
-                <Ionicons name="heart" size={25} color={colors.muted} />
+                <Ionicons name="heart-outline" size={25} color={colors.muted} />
               ) : (
-                <Ionicons name="heart" size={25} color={colors.danger} />
+                <Ionicons name="heart" size={25} color={colors.primary} />
               )}
             </TouchableOpacity>
           </View>
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     height: 80,
     borderRadius: 10,
-    elevation: 5,
+    // elevation: 5,
     margin: 5,
   },
   detailContainer: {
@@ -79,18 +79,19 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 50,
     height: 50,
-    elevation: 5,
+    // elevation: 5,
     display: "flex",
     justifyContent: "center",
 
     backgroundColor: colors.light,
   },
   categoryTitle: {
-    fontSize: 15,
-    fontWeight: "500",
+    fontSize: 14,
+    fontFamily: 'Montserrat-Medium',
   },
   categoryDescription: {
     fontSize: 12,
+    fontFamily: 'Montserrat-Medium',
     color: colors.muted,
   },
   categoryInfo: {
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   infoButtonContainer: {
-    padding: 5,
+    // padding: 5,
     paddingRight: 0,
     display: "flex",
 
@@ -122,13 +123,14 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   wishlistButtonContainer: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: colors.light,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+    borderRadius:30,
+    borderWidth: 1,
+    borderColor: colors.primary,
   },
 });

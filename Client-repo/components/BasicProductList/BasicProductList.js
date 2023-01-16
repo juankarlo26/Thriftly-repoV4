@@ -12,11 +12,11 @@ const BasicProductList = ({ title, price, quantity }) => {
         </View>
         <View style={styles.productInfoContainer}>
           <Text style={styles.secondaryText}>{title}</Text>
-          <Text>x{quantity}</Text>
+          <Text>Qty: {quantity}</Text>
         </View>
       </View>
       <View>
-        <Text style={styles.primaryText}>{quantity * price}$</Text>
+        <Text style={styles.primaryText}>{quantity * price}₱</Text>
       </View>
     </View>
   );
@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   primaryText: {
-    fontSize: 15,
-    fontWeight: "600",
-    color: colors.primary,
+    fontSize: 14,
+    fontFamily: 'Montserrat-Medium',
+    // color: colors.primary,
   },
   secondaryText: {
-    fontSize: 15,
-    fontWeight: "600",
+    fontSize: 13,
+    fontFamily: 'Montserrat-Medium',
   },
 });

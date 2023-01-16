@@ -113,7 +113,7 @@ const CheckoutScreen = ({ navigation, route }) => {
     }
     setTotalCost(
       cartproduct.reduce((accumulator, object) => {
-        return accumulator + object.price * object.quantity;
+        return accumulator + object.price * object.quantity - (700 * object.quantity);//for deletion
       }, 0)
     );
   }, []);
@@ -156,16 +156,16 @@ const CheckoutScreen = ({ navigation, route }) => {
         <View style={styles.totalOrderInfoContainer}>
           <View style={styles.list}>
             <Text>Order</Text>
-            <Text>{totalCost}$</Text>
+            <Text>{totalCost}₱</Text>
           </View>
           <View style={styles.list}>
             <Text>Delivery</Text>
-            <Text>{deliveryCost}$</Text>
+            <Text>{deliveryCost}₱</Text>
           </View>
           <View style={styles.list}>
             <Text style={styles.primaryTextSm}>Total</Text>
             <Text style={styles.secondaryTextSm}>
-              {totalCost + deliveryCost}$
+              {totalCost + deliveryCost}₱
             </Text>
           </View>
         </View>
@@ -174,12 +174,12 @@ const CheckoutScreen = ({ navigation, route }) => {
           <View style={styles.list}>
             <Text style={styles.secondaryTextSm}>Email</Text>
             <Text style={styles.secondaryTextSm}>
-              bukhtyar.haider1@gmail.com
+              juankarlo@gmail.com
             </Text>
           </View>
           <View style={styles.list}>
             <Text style={styles.secondaryTextSm}>Phone</Text>
-            <Text style={styles.secondaryTextSm}>+92 3410988683</Text>
+            <Text style={styles.secondaryTextSm}>+62 9950 048 5454</Text>
           </View>
         </View>
         <Text style={styles.primaryText}>Address</Text>
@@ -238,27 +238,33 @@ const CheckoutScreen = ({ navigation, route }) => {
         }}
       >
         <View style={styles.modelBody}>
+        
           <View style={styles.modelAddressContainer}>
+          <Text style={styles.primaryText}>Address</Text>
             <CustomInput
               value={country}
               setValue={setCountry}
               placeholder={"Enter Country"}
+              radius={15}
             />
             <CustomInput
               value={city}
               setValue={setCity}
               placeholder={"Enter City"}
+              radius={15}
             />
             <CustomInput
               value={streetAddress}
               setValue={setStreetAddress}
               placeholder={"Enter Street Address"}
+              radius={15}
             />
             <CustomInput
               value={zipcode}
               setValue={setZipcode}
               placeholder={"Enter ZipCode"}
               keyboardType={"number-pad"}
+              radius={15}
             />
             {streetAddress || city || country != "" ? (
               <CustomButton
@@ -327,7 +333,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginTop: 5,
     fontSize: 20,
-    fontWeight: "bold",
+    fontFamily: 'Montserrat-SemiBold'
   },
   list: {
     display: "flex",
@@ -343,12 +349,12 @@ const styles = StyleSheet.create({
   },
   primaryTextSm: {
     fontSize: 15,
-    fontWeight: "bold",
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.primary,
   },
   secondaryTextSm: {
     fontSize: 15,
-    fontWeight: "bold",
+    fontFamily: 'Montserrat-SemiBold'
   },
   listContainer: {
     backgroundColor: colors.white,

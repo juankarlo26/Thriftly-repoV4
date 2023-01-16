@@ -108,8 +108,7 @@ const AddProductScreen = ({ navigation, route }) => {
       redirect: "follow",
     };
 
-    fetch(
-      "https://api-easybuy.herokuapp.com/photos/upload",
+    fetch(network.serverip +"/photos/upload",
       ImageRequestOptions
     )
       .then((response) => response.json())
@@ -143,7 +142,7 @@ const AddProductScreen = ({ navigation, route }) => {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [1, 1],
-      quality: 0.5,
+      quality: 1,
     });
 
     if (!result.cancelled) {

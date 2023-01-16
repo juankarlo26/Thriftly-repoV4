@@ -23,7 +23,7 @@ const MyAccountScreen = ({ navigation, route }) => {
   const showConfirmDialog = (id) => {
     return Alert.alert(
       "Are your sure?",
-      "Are you sure you want to remove your account?",
+      "Are you sure you want to permanently delete your account?",
       [
         {
           text: "Yes",
@@ -75,10 +75,14 @@ const MyAccountScreen = ({ navigation, route }) => {
             color={colors.muted}
           />
         </TouchableOpacity>
-      </View>
-      <View style={styles.screenNameContainer}>
+        <View style={styles.screenNameContainer}>
         <Text style={styles.screenNameText}>My Account</Text>
+        <Text style={styles.screenNameParagraph}>
+            View all detail about order
+          </Text>
       </View>
+      </View>
+  
       <View style={styles.UserProfileCardContianer}>
         <UserProfileCard
           Icon={Ionicons}
@@ -134,17 +138,23 @@ const styles = StyleSheet.create({
     height: "25%",
   },
   screenNameContainer: {
-    marginTop: 10,
+    marginLeft: 10,
     width: "100%",
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "flex-start",
-    alignItems: "center",
+    alignItems: "flex-start",
     marginBottom: 10,
   },
   screenNameText: {
-    fontSize: 30,
-    fontWeight: "800",
+    fontSize: 22,
+    fontFamily: 'Montserrat-SemiBold',
+    // color: colors.muted,
+  },
+  screenNameParagraph: {
+    // marginTop: 10,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
     color: colors.muted,
   },
   OptionsContainer: {

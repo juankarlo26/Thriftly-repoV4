@@ -219,7 +219,7 @@ const ViewOrderDetailScreen = ({ navigation, route }) => {
           </ScrollView>
           <View style={styles.orderItemContainer}>
             <Text style={styles.orderItemText}>Total</Text>
-            <Text>{totalCost}$</Text>
+            <Text>₱ {totalCost}</Text>
           </View>
         </View>
         <View style={styles.emptyView}></View>
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
   },
   screenNameText: {
     fontSize: 30,
-    fontWeight: "800",
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.muted,
   },
   screenNameParagraph: {
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
   },
   containerNameText: {
     fontSize: 18,
-    fontWeight: "800",
+    fontFamily: 'Montserrat-SemiBold',
     color: colors.muted,
   },
   secondarytextSm: {

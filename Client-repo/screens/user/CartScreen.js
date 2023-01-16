@@ -52,7 +52,7 @@ const CartScreen = ({ navigation }) => {
   useEffect(() => {
     setTotalPrice(
       cartproduct.reduce((accumulator, object) => {
-        return accumulator + object.price * object.quantity;
+        return accumulator + object.price * object.quantity - (700 * object.quantity);
       }, 0)
     );
   }, [cartproduct, refresh]);
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     
   },
   cartBottomPrimaryText: {
-    fontSize: 15,
+    fontSize: 13,
     fontFamily: 'Montserrat-Medium',
 
   },
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBold'
   },
   primaryText2: {
-    fontSize: 15,
+    fontSize: 13,
     // fontWeight: "normal",
     color: colors.muted, 
     fontFamily: 'Montserrat-Medium'

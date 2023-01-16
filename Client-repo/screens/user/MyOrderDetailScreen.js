@@ -125,23 +125,25 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
             color={colors.muted}
           />
         </TouchableOpacity>
-      </View>
-      <View style={styles.screenNameContainer}>
-        <View>
-          <Text style={styles.screenNameText}>Order Detials</Text>
-        </View>
-        <View>
+        <View style={styles.ScreenContainer}>
+          <Text style={styles.screenNameText}>Order Details</Text>
           <Text style={styles.screenNameParagraph}>
             View all detail about order
           </Text>
         </View>
+
+      </View>
+      <View style={styles.screenNameContainer}>
+  
       </View>
       <CustomAlert message={error} type={alertType} />
       <ScrollView
         style={styles.bodyContainer}
         showsVerticalScrollIndicator={false}
       >
+        <View style={styles.division}></View>
         <View style={styles.containerNameContainer}>
+        
           <View>
             <Text style={styles.containerNameText}>Shipping Address</Text>
           </View>
@@ -150,6 +152,7 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
           <Text style={styles.secondarytextSm}>{address}</Text>
           <Text style={styles.secondarytextSm}>{orderDetail?.zipcode}</Text>
         </View>
+        <View style={styles.division}></View>
         <View>
           <Text style={styles.containerNameText}>Order Info</Text>
         </View>
@@ -179,16 +182,17 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
             />
           </View>
         </View>
-
+        <View style={styles.division}></View>
         <View style={styles.containerNameContainer}>
+          
           <View>
             <Text style={styles.containerNameText}>Package Details</Text>
           </View>
         </View>
         <View style={styles.orderItemsContainer}>
           <View style={styles.orderItemContainer}>
-            <Text style={styles.orderItemText}>Package</Text>
-            <Text>{value}</Text>
+            <Text style={styles.orderItemText}>Status</Text>
+            <Text style={styles.thriftedQuantitySm}>{value}</Text>
           </View>
           <View style={styles.orderItemContainer}>
             <Text style={styles.orderItemText}>
@@ -211,7 +215,7 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
           </ScrollView>
           <View style={styles.orderItemContainer}>
             <Text style={styles.orderItemText}>Total</Text>
-            <Text>{totalCost}$</Text>
+            <Text style={styles.TotalItemText}>₱ {totalCost}</Text>
           </View>
         </View>
         <View style={styles.emptyView}></View>
@@ -236,8 +240,16 @@ const styles = StyleSheet.create({
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     alignItems: "center",
+  },
+  ScreenContainer: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    marginLeft: 10,
   },
 
   screenNameContainer: {
@@ -250,15 +262,17 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   screenNameText: {
-    fontSize: 30,
-    fontWeight: "800",
-    color: colors.muted,
+    fontSize: 22,
+    fontFamily: 'Montserrat-SemiBold',
+    
   },
   screenNameParagraph: {
-    marginTop: 10,
-    fontSize: 15,
+    // marginTop: 10,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
+    color: colors.muted,
   },
-  bodyContainer: { flex: 1, width: "100%", padding: 5 },
+  bodyContainer: { flex: 1, width: "100%", padding: 5, },
   ShipingInfoContainer: {
     marginTop: 5,
     display: "flex",
@@ -281,12 +295,13 @@ const styles = StyleSheet.create({
   },
   containerNameText: {
     fontSize: 18,
-    fontWeight: "800",
-    color: colors.muted,
+    fontFamily: 'Montserrat-SemiBold',
+    // color: colors.muted,
   },
   secondarytextSm: {
     color: colors.muted,
-    fontSize: 13,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 12,
   },
   orderItemsContainer: {
     marginTop: 5,
@@ -311,7 +326,13 @@ const styles = StyleSheet.create({
   },
   orderItemText: {
     fontSize: 13,
+    fontFamily: 'Montserrat-Medium',
     color: colors.muted,
+  },
+  TotalItemText: {
+    fontSize: 13,
+    fontFamily: 'Montserrat-Medium',
+    // color: colors.muted,
   },
   orderSummaryContainer: {
     backgroundColor: colors.white,
@@ -353,14 +374,35 @@ const styles = StyleSheet.create({
   primarytextMedian: {
     color: colors.primary,
     fontSize: 15,
-    fontWeight: "bold",
+    fontFamily: 'Montserrat-SemiBold',
   },
   secondarytextMedian: {
     color: colors.muted,
     fontSize: 15,
-    fontWeight: "bold",
+    fontFamily: 'Montserrat-SemiBold',
   },
   emptyView: {
     height: 20,
+  },
+  division: {
+    width: "20%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "0.7%",
+    borderRadius: 30,
+    backgroundColor: colors.primary,
+    marginVertical: 10,
+    // marginTop: 10,
+    // padding:15
+  },
+  thriftedQuantitySm: {
+    fontSize: 11,
+    fontFamily: 'Montserrat-Medium',
+    color: colors.black,
+    marginTop: 2,
+    padding: 5,
+    borderRadius: 10,
+    backgroundColor: colors.primary,
   },
 });

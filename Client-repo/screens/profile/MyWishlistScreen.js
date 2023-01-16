@@ -142,7 +142,7 @@ const MyWishlistScreen = ({ navigation, route }) => {
         </View>
         <View>
           <Text style={styles.screenNameParagraph}>
-            View , add or remove products from wishlist for later purchase
+            View products from your wishlist
           </Text>
         </View>
       </View>
@@ -219,13 +219,15 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   screenNameText: {
-    fontSize: 30,
-    fontWeight: "800",
-    color: colors.muted,
+    fontSize: 22,
+    fontFamily: 'Montserrat-SemiBold',
+    // color: colors.muted,
   },
   screenNameParagraph: {
     marginTop: 5,
-    fontSize: 15,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 13,
+    color: colors.muted,
   },
   bodyContainer: {
     width: "100%",
