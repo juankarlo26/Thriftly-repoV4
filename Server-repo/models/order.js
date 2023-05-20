@@ -19,6 +19,7 @@ const orderSchema = mongoose.Schema({
     status : {type : String, enum : ["pending", "shipped", "delivered"]},
     country : {type : String},
     city : {type : String},
+    thrift : {type : String},
     zipcode : {type : String},
     payment_type : {type : String, enum: ["cod","online"]},
     shippedOn : {type : String},

@@ -18,14 +18,17 @@ import { bindActionCreators } from "redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import CustomInput from "../../components/CustomInput";
 import ProgressDialog from "react-native-progress-dialog";
+import { MaterialIcons } from "@expo/vector-icons";
+import Colors from "../../constants/Colors";
 
 const CheckoutScreen = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible2, setModalVisible2] = useState(false);
   const [isloading, setIsloading] = useState(false);
   const cartproduct = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const { emptyCart } = bindActionCreators(actionCreaters, dispatch);
-
+  const [thrift, setthrift] = useState("");
   const [deliveryCost, setDeliveryCost] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
   const [address, setAddress] = useState("");
@@ -70,6 +73,7 @@ const CheckoutScreen = ({ navigation, route }) => {
       amount: totalamount,
       discount: 0,
       payment_type: "cod",
+      thrift: thrift,
       country: country,
       status: "pending",
       city: city,
@@ -111,9 +115,14 @@ const CheckoutScreen = ({ navigation, route }) => {
     } else {
       setAddress("");
     }
+    if (thrift != "") {
+      setthrift(`${thrift}`);
+    } else {
+      setthrift("");
+    }
     setTotalCost(
       cartproduct.reduce((accumulator, object) => {
-        return accumulator + object.price * object.quantity - (700 * object.quantity);//for deletion
+        return accumulator + object.price * object.quantity;//for deletion
       }, 0)
     );
   }, []);
@@ -134,55 +143,12 @@ const CheckoutScreen = ({ navigation, route }) => {
             color={colors.muted}
           />
         </TouchableOpacity>
-        <View></View>
-        <View></View>
+        <Text style={styles.primaryText}>Checkout</Text>
+        <Text style={styles.primaryText}></Text>
       </View>
+      
       <ScrollView style={styles.bodyContainer} nestedScrollEnabled={true}>
-        <Text style={styles.primaryText}>Order Summary</Text>
-        <ScrollView
-          style={styles.orderSummaryContainer}
-          nestedScrollEnabled={true}
-        >
-          {cartproduct.map((product, index) => (
-            <BasicProductList
-              key={index}
-              title={product.title}
-              price={product.price}
-              quantity={product.quantity}
-            />
-          ))}
-        </ScrollView>
-        <Text style={styles.primaryText}>Total</Text>
-        <View style={styles.totalOrderInfoContainer}>
-          <View style={styles.list}>
-            <Text>Order</Text>
-            <Text>{totalCost}₱</Text>
-          </View>
-          <View style={styles.list}>
-            <Text>Delivery</Text>
-            <Text>{deliveryCost}₱</Text>
-          </View>
-          <View style={styles.list}>
-            <Text style={styles.primaryTextSm}>Total</Text>
-            <Text style={styles.secondaryTextSm}>
-              {totalCost + deliveryCost}₱
-            </Text>
-          </View>
-        </View>
-        <Text style={styles.primaryText}>Contact</Text>
-        <View style={styles.listContainer}>
-          <View style={styles.list}>
-            <Text style={styles.secondaryTextSm}>Email</Text>
-            <Text style={styles.secondaryTextSm}>
-              juankarlo@gmail.com
-            </Text>
-          </View>
-          <View style={styles.list}>
-            <Text style={styles.secondaryTextSm}>Phone</Text>
-            <Text style={styles.secondaryTextSm}>+62 9950 048 5454</Text>
-          </View>
-        </View>
-        <Text style={styles.primaryText}>Address</Text>
+      <Text style={styles.primaryText2}>Delivery Address</Text>
         <View style={styles.listContainer}>
           <TouchableOpacity
             style={styles.list}
@@ -201,23 +167,117 @@ const CheckoutScreen = ({ navigation, route }) => {
                     : `${address.substring(0, 25)}...`}
                 </Text>
               ) : (
-                <Text style={styles.primaryTextSm}>Add</Text>
+                <Ionicons name="add-circle-outline" size={30} color={colors.primary} />
               )}
             </View>
           </TouchableOpacity>
         </View>
-        <Text style={styles.primaryText}>Payment</Text>
+        <Text style={styles.primaryText2}>Thrift</Text>
+        <View style={styles.listContainer}>
+          <TouchableOpacity
+            style={styles.list}
+            onPress={() => setModalVisible2(true)}
+          >
+            <Text style={styles.secondaryTextSm}>Amount</Text>
+            <View>
+              { thrift != "" ? (
+                <Text
+                  style={styles.secondaryTextSm}
+                  numberOfLines={1}
+                  ellipsizeMode="tail"
+                >
+                  {thrift.length < 25
+                    ? `${thrift}`
+                    : `${thrift.substring(0, 25)}...`}
+                </Text>
+              ) : (
+                <Ionicons name="add-circle-outline" size={30} color={colors.primary} />
+              )}
+            </View>
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.primaryText2}>Order Summary</Text>
+        <ScrollView
+          style={styles.orderSummaryContainer}
+          nestedScrollEnabled={true}
+        >
+          {cartproduct.map((product, index) => (
+            <BasicProductList
+              key={index}
+              title={product.title}
+              price={product.price}
+              quantity={product.quantity}
+            />
+          ))}
+        </ScrollView>
+        
+        
+
+
+
+        <Text style={styles.primaryText2}>Total</Text>
+        <View style={styles.totalOrderInfoContainer}>
+          <View style={styles.list}>
+            <Text style={styles.secondaryTextSm}>Order</Text>
+            <Text style={styles.secondaryTextSm}>{totalCost}₱</Text>
+          </View>
+          <View style={styles.list}>
+            <Text style={styles.secondaryTextSm}>Delivery</Text>
+            <Text style={styles.secondaryTextSm}>{deliveryCost}₱</Text>
+          </View>
+          <View style={styles.list}>
+            <Text style={styles.secondaryTextSm}>Total</Text>
+            <Text style={styles.primaryTextSm}>
+              {totalCost + deliveryCost}₱
+            </Text>
+          </View>
+        </View>
+        {/* <Text style={styles.primaryText2}>Contact</Text>
+        
+        <View style={styles.listContainer}>
+          <View style={styles.list}>
+            <Text style={styles.secondaryTextSm}>Email</Text>
+            <Text style={styles.secondaryTextSm}>
+              juankarlo@gmail.com
+            </Text>
+          </View>
+
+          <View style={styles.list}>
+            <Text style={styles.secondaryTextSm}>Phone</Text>
+            <Text style={styles.secondaryTextSm}>+62 9950 048 5454</Text>
+          </View>
+        </View> */}
+
+      <Text style={styles.primaryText2}>Payment</Text>
         <View style={styles.listContainer}>
           <View style={styles.list}>
             <Text style={styles.secondaryTextSm}>Method</Text>
             <Text style={styles.primaryTextSm}>Cash On Delivery</Text>
           </View>
         </View>
+   
+
 
         <View style={styles.emptyView}></View>
       </ScrollView>
-      <View style={styles.buttomContainer}>
+      <View style={styles.cartBottomContainer}>
+      <View style={styles.cartBottomLeftContainer}>
+          <View style={styles.IconContainer}>
+            <MaterialIcons
+              name="payments"
+              size={24}
+              color={colors.primary}
+            />
+          </View>
+          <View>
+            <Text style={styles.cartBottomPrimaryText}>Subtotal:</Text>
+            <Text>₱ {totalCost}</Text>
+          </View>
+        </View>
+
+        <View style={styles.cartBottomRightContainer}>
         {country && city && streetAddress != "" ? (
+          
           <CustomButton
             text={"Submit Order"}
             // onPress={() => navigation.replace("orderconfirm")}
@@ -226,8 +286,9 @@ const CheckoutScreen = ({ navigation, route }) => {
             }}
           />
         ) : (
-          <CustomButton text={"Submit Order"} disabled />
+          <CustomButton text={"Confirm"} disabled />
         )}
+        </View>
       </View>
       <Modal
         animationType="slide"
@@ -285,6 +346,45 @@ const CheckoutScreen = ({ navigation, route }) => {
           </View>
         </View>
       </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible2}
+        onRequestClose={() => {
+          setModalVisible2(!modalVisible2);
+        }}
+      >
+        <View style={styles.modelBody}>
+        
+          <View style={styles.modelAddressContainer2}>
+          <Text style={styles.primaryText3}>Amount</Text>
+            <CustomInput
+              value={thrift}
+              setValue={setthrift}
+              placeholder={"Enter amount"}
+              keyboardType={"number-pad"}
+              radius={15}
+            />
+            {thrift != "" ? (
+              <CustomButton
+              onPress={() => {
+                setModalVisible2(!modalVisible2);
+                setAddress(`${streetAddress}, ${city},${country}`);
+              }}
+              text={"save"}
+            />
+            ) : (
+              <CustomButton
+                onPress={() => {
+                  setModalVisible2(!modalVisible2);
+                }}
+                text={"close"}
+              />
+            )}
+          </View>
+        </View>
+      </Modal>
+      
     </View>
   );
 };
@@ -295,7 +395,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirecion: "row",
-    backgroundColor: colors.light,
+    backgroundColor: colors.dark,
     alignItems: "center",
     justifyContent: "flex-start",
     paddingBottom: 0,
@@ -319,7 +419,7 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   orderSummaryContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.semi,
     borderRadius: 10,
     padding: 10,
     maxHeight: 220,
@@ -327,12 +427,26 @@ const styles = StyleSheet.create({
   totalOrderInfoContainer: {
     borderRadius: 10,
     padding: 10,
-    backgroundColor: colors.white,
+    backgroundColor: colors.semi,
   },
   primaryText: {
     marginBottom: 5,
     marginTop: 5,
     fontSize: 20,
+    color: colors.white,
+    fontFamily: 'Montserrat-SemiBold'
+  },
+  primaryText2: {
+    marginVertical: 10,
+    fontSize: 15,
+    fontFamily: 'Montserrat-SemiBold',
+    color: colors.white,
+  },
+  primaryText3: {
+    marginBottom: 5,
+    marginTop: 5,
+    fontSize: 20,
+    color: colors.black,
     fontFamily: 'Montserrat-SemiBold'
   },
   list: {
@@ -341,7 +455,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
 
-    backgroundColor: colors.white,
+    // backgroundColor: colors.white,
     height: 50,
     borderBottomWidth: 1,
     borderBottomColor: colors.light,
@@ -353,11 +467,12 @@ const styles = StyleSheet.create({
     color: colors.primary,
   },
   secondaryTextSm: {
-    fontSize: 15,
-    fontFamily: 'Montserrat-SemiBold'
+    fontSize: 14,
+    fontFamily: 'Montserrat-SemiBold',
+    color: colors.gray,
   },
   listContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.semi,
     borderRadius: 10,
     padding: 10,
   },
@@ -389,5 +504,68 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 20,
     elevation: 3,
+  },
+  modelAddressContainer2: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    width: 320,
+    height: 200,
+    backgroundColor: colors.white,
+    borderRadius: 20,
+    elevation: 3,
+  },
+  thriftedQuantitySm2: {
+    fontSize: 13,
+    
+    fontFamily: 'Montserrat-Bold',
+    color: colors.black,
+    marginTop: 2,
+    padding: 5,
+    borderRadius: 10,
+    backgroundColor: colors.primary,
+  },
+  cartBottomContainer: {
+    width: "100%",
+    height: 130,
+    display: "flex",
+    backgroundColor: colors.white,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+    elevation: 25,
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  cartBottomLeftContainer: {
+    padding: 30,
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    width: "40%",
+    height: "100%",
+  },
+  cartBottomRightContainer: {
+    padding: 10,
+    display: "flex",
+    justifyContent: "flex-end",
+    flexDirection: "column",
+    alignItems: "center",
+    width: "60%",
+    height: "100%",
+    
+  },
+  IconContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.light,
+    height: 40,
+    width: 40,
+    borderRadius: 5,
   },
 });

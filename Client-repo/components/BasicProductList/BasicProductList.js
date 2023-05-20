@@ -8,11 +8,11 @@ const BasicProductList = ({ title, price, quantity }) => {
     <View style={styles.container}>
       <View style={styles.innerContainer}>
         <View style={styles.IconContainer}>
-          <Ionicons name="square" size={30} color={colors.muted} />
+          <Ionicons name="square" size={30} color={colors.semiGray} />
         </View>
         <View style={styles.productInfoContainer}>
           <Text style={styles.secondaryText}>{title}</Text>
-          <Text>Qty: {quantity}</Text>
+          <Text style={styles.secondaryText}>Qty: {quantity}</Text>
         </View>
       </View>
       <View>
@@ -31,17 +31,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    backgroundColor: colors.white,
+    backgroundColor: colors.dark,
     height: 70,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.light,
-    padding: 5,
+    borderBottomWidth: 2,
+    borderBottomColor: colors.semi,
+    padding: 15,
   },
   innerContainer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    
   },
   productInfoContainer: {
     justifyContent: "center",
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.light,
+    backgroundColor: colors.semi,
     height: 40,
     width: 40,
     borderRadius: 5,
@@ -61,10 +62,11 @@ const styles = StyleSheet.create({
   primaryText: {
     fontSize: 14,
     fontFamily: 'Montserrat-Medium',
-    // color: colors.primary,
+    color: colors.gray,
   },
   secondaryText: {
     fontSize: 13,
     fontFamily: 'Montserrat-Medium',
+    color: colors.semiGray,
   },
 });

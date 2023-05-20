@@ -25,6 +25,7 @@ const Tabs = ({ navigation, route }) => {
         tabBarStyle: [
           {
             display: "flex",
+            
           },
           null,
         ],
@@ -102,9 +103,10 @@ const Tabs = ({ navigation, route }) => {
           }
         },
         tabBarStyle: {
-          borderTopLeftRadius: 20,
-          borderTopRightRadius: 20,
+          // borderTopLeftRadius: 20,
+          // borderTopRightRadius: 20,
           backgroundColor: colors.black,
+          backgroundColor: colors.black
         },
       })}
     >

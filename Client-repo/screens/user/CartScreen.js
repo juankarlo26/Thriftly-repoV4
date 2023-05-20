@@ -52,7 +52,7 @@ const CartScreen = ({ navigation }) => {
   useEffect(() => {
     setTotalPrice(
       cartproduct.reduce((accumulator, object) => {
-        return accumulator + object.price * object.quantity - (700 * object.quantity);
+        return accumulator + object.price * object.quantity;
       }, 0)
     );
   }, [cartproduct, refresh]);

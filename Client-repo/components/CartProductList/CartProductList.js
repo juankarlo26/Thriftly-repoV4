@@ -22,7 +22,7 @@ const CartProductList = ({
           <MaterialCommunityIcons
             name="delete"
             size={25}
-            color={colors.primary}
+            color={colors.danger}
           />
         </TouchableOpacity>
       </View>
@@ -42,7 +42,7 @@ const CartProductList = ({
               </View>
               <View style={styles.thriftedContainer}>
                 <Text style={styles.productQuantitySm}>Qty: {quantity}</Text>
-                <Text style={styles.thriftedQuantitySm}>Thrifted: 700</Text>
+                <Text style={styles.thriftedQuantitySm}>Thriftable</Text>
               </View>
               <View style={styles.productListBottomContainer}>
                 <Text style={styles.productPrice}>₱{price * quantity}</Text>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
  
   },
   containerOuter: {
-    backgroundColor: colors.primary_light,
+    backgroundColor: colors.red,
     height: 120,
     borderRadius: 17,
     width: "100%",
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.primary_light,
+    backgroundColor: colors.red,
     borderTopEndRadius: 15,
     borderBottomRightRadius: 15,
     marginBottom: 10,

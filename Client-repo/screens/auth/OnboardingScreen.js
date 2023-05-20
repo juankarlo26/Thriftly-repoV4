@@ -44,6 +44,7 @@ const OnboardingScreen = ({ navigation }) => {
       fontFamily: 'Montserrat-Bold',
       marginBottom: 10,
       padding: 10,
+      marginHorizontal: 20,
       justifyContent: "flex-start",
       alignItems: "flex-start",
       
@@ -53,19 +54,38 @@ const OnboardingScreen = ({ navigation }) => {
       fontFamily: 'Montserrat-Medium',
       marginBottom: 10,
       padding: 10,
+      marginHorizontal: 20,
     }}
     pages={[
       {
         backgroundColor: colors.primary,
         image: <Image source={require('../../assets/onboarding/onboard_1.png')} style={styles.onboardImage} />,
         title: 'Welcome',
-        subtitle: 'Welcome !Thriftly the worlds best E -commerce  ',
+        subtitle: 'Welcome !Thriftly the worlds best E -commerce, Name your price and shop!',
       },
       {
-        backgroundColor: colors.white,
-        image: <Image source={require('../../assets/onboarding/onboard_3.png')} style={styles.onboardImage}/>,
-        title: 'The Hive',
-        subtitle: 'Created and developed by The Hive, software Dev Team based in the Philippines',
+        backgroundColor: colors.onboardBlack,
+        image: <Image source={require('../../assets/onboarding/onboard_7.png')} style={styles.onboardImage}/>,
+        title: 'The Developers',
+        subtitle: 'Created and developed by The Hive™, software Dev Team based in the Philippines',
+      },
+      {
+        backgroundColor: colors.onboardBlack,
+        image: <Image source={require('../../assets/onboarding/onboard_4.png')} style={styles.onboardImage}/>,
+        title: 'Quality Assurance',
+        subtitle: 'Francis Yvan G. Navarossa is responsible to the overall functionality assessment of the system',
+      },
+      {
+        backgroundColor: colors.dark,
+        image: <Image source={require('../../assets/onboarding/onboard_5.png')} style={styles.onboardImage}/>,
+        title: 'Front-End Developer',
+        subtitle: 'Juan Karlo C. Morales is responsible to the outside feature as well as parts of the back-end',
+      },
+      {
+        backgroundColor: colors.dark,
+        image: <Image source={require('../../assets/onboarding/onboard_6.png')} style={styles.onboardImage}/>,
+        title: 'Back-End Developer',
+        subtitle: 'Pewee James P. Lofranco is responsible to internal functionalities of the application',
       },
       {
         backgroundColor: colors.black,
@@ -86,16 +106,16 @@ const styles = StyleSheet.create({
  
   onboardImage: {
     resizeMode: "contain",
-    width: 250,
-    height: 300,
+    width: 300,
+    height: 350,
     // backgroundColor: colors.black,
   },
   DotButton: {
-    // resizeMode: "contain",
+    resizeMode: "contain",
     width: 6,
     height: 6,
     marginHorizontal: 3,
-    // backgroundColor: colors.black,
+    backgroundColor: colors.black,
   },
   nextButton: {
     marginHorizontal: 13,
@@ -127,7 +147,7 @@ const styles = StyleSheet.create({
   skipButtonText: {
     fontSize: 12,
     fontFamily: 'Montserrat-SemiBold',
-    color: colors.black,
+    // color: colors.black,
   },
   
   

@@ -31,10 +31,23 @@ const UserProfileScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto"></StatusBar>
-      <View style={styles.TopBarContainer}>
-        <TouchableOpacity>
+      <View style={styles.topBarContainer}>
+        {/* <TouchableOpacity>
           <Ionicons name="menu-sharp" size={30} color={colors.primary} />
+        </TouchableOpacity> */}
+                <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
+          <Ionicons
+            name="arrow-back-circle-outline"
+            size={30}
+            color={colors.muted}
+          />
         </TouchableOpacity>
+        <Text style={styles.primaryText}>Account</Text>
+        <Text style={styles.primaryText}></Text>
       </View>
       {/* <View style={styles.screenNameContainer}>
         <Text style={styles.screenNameText}>Profile</Text>
@@ -99,12 +112,23 @@ const styles = StyleSheet.create({
     padding: 20,
     flex: 1,
   },
-  TopBarContainer: {
+  topBarContainer: {
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     alignItems: "center",
+    padding: 0,
+  },
+  toBarText: {
+    fontSize: 15,
+    fontWeight: "600",
+  },
+  primaryText: {
+    fontSize: 20,
+    fontFamily: 'Montserrat-SemiBold',
+    color: colors.black,
+    
   },
   UserProfileCardContianer: {
     width: "100%",
@@ -127,5 +151,6 @@ const styles = StyleSheet.create({
   },
   OptionsContainer: {
     width: "100%",
+    
   },
 });

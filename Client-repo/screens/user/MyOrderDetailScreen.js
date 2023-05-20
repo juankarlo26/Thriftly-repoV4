@@ -22,6 +22,7 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
   const [alertType, setAlertType] = useState("error");
   const [totalCost, setTotalCost] = useState(0);
   const [address, setAddress] = useState("");
+  const [thrifted, setThrifted] = useState("");
   const [value, setValue] = useState(null);
   const [statusDisable, setStatusDisable] = useState(false);
   const labels = ["Processing", "Shipping", "Delivery"];
@@ -88,13 +89,18 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
       setStatusDisable(false);
     }
     setValue(orderDetail?.status);
+
+    setThrifted(orderDetail?.thrift);
+
     setAddress(
       orderDetail?.country +
         ", " +
         orderDetail?.city +
-        ", " +
-        orderDetail?.shippingAddress
+        ", " + 
+        orderDetail?.shippingAddress 
     );
+
+
     setTotalCost(
       orderDetail?.items.reduce((accumulator, object) => {
         return (accumulator + object.price) * object.quantity;
@@ -141,6 +147,15 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
         style={styles.bodyContainer}
         showsVerticalScrollIndicator={false}
       >
+
+      {/* <View style={styles.division}></View> */}
+        <View style={styles.containerNameContainer2}>
+        <Text style={styles.containerNameText}>Thrifted Price</Text>
+            <Text style={styles.thriftedQuantitySm2}>{thrifted} PHP</Text>
+        </View>
+        
+  
+
         <View style={styles.division}></View>
         <View style={styles.containerNameContainer}>
         
@@ -149,8 +164,22 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
           </View>
         </View>
         <View style={styles.ShipingInfoContainer}>
-          <Text style={styles.secondarytextSm}>{address}</Text>
-          <Text style={styles.secondarytextSm}>{orderDetail?.zipcode}</Text>
+          {/* <Text style={styles.secondarytextSm}>{address}</Text> */}
+          <Text style={styles.secondarytextSm}>
+            <Text style={styles.secondarytextSm1}>Country: </Text> {orderDetail?.country}
+          </Text>
+          <Text style={styles.secondarytextSm}>
+            <Text style={styles.secondarytextSm1}>City / Province: </Text>
+            {orderDetail?.city}
+          </Text>
+          <Text style={styles.secondarytextSm}>
+            <Text style={styles.secondarytextSm1}>Street: </Text>
+            {orderDetail?.shippingAddress}
+          </Text>
+          <Text style={styles.secondarytextSm}>
+            <Text style={styles.secondarytextSm1}>ZipCode: </Text>
+            {orderDetail?.zipcode}
+          </Text>
         </View>
         <View style={styles.division}></View>
         <View>
@@ -191,7 +220,7 @@ const MyOrderDetailScreen = ({ navigation, route }) => {
         </View>
         <View style={styles.orderItemsContainer}>
           <View style={styles.orderItemContainer}>
-            <Text style={styles.orderItemText}>Status</Text>
+            <Text style={styles.orderItemText}>Status:</Text>
             <Text style={styles.thriftedQuantitySm}>{value}</Text>
           </View>
           <View style={styles.orderItemContainer}>
@@ -229,7 +258,7 @@ export default MyOrderDetailScreen;
 const styles = StyleSheet.create({
   container: {
     flexDirecion: "row",
-    backgroundColor: colors.light,
+    backgroundColor: colors.dark,
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
@@ -264,13 +293,14 @@ const styles = StyleSheet.create({
   screenNameText: {
     fontSize: 22,
     fontFamily: 'Montserrat-SemiBold',
+    color: colors.white,
     
   },
   screenNameParagraph: {
     // marginTop: 10,
     fontFamily: 'Montserrat-Medium',
     fontSize: 13,
-    color: colors.muted,
+    color: colors.semiGray,
   },
   bodyContainer: { flex: 1, width: "100%", padding: 5, },
   ShipingInfoContainer: {
@@ -279,7 +309,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-    backgroundColor: colors.white,
+    backgroundColor: colors.semi,
     padding: 10,
     borderRadius: 10,
     borderColor: colors.muted,
@@ -293,13 +323,25 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "flex-start",
   },
+  containerNameContainer2: {
+    marginTop: 10,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
   containerNameText: {
     fontSize: 18,
     fontFamily: 'Montserrat-SemiBold',
-    // color: colors.muted,
+    color: colors.white,
   },
   secondarytextSm: {
-    color: colors.muted,
+    color: colors.semiGray,
+    fontFamily: 'Montserrat-Medium',
+    fontSize: 12,
+  },
+  secondarytextSm1: {
+    color: colors.white,
     fontFamily: 'Montserrat-Medium',
     fontSize: 12,
   },
@@ -309,7 +351,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-    backgroundColor: colors.white,
+    backgroundColor: colors.semi,
     padding: 10,
     borderRadius: 10,
 
@@ -327,20 +369,20 @@ const styles = StyleSheet.create({
   orderItemText: {
     fontSize: 13,
     fontFamily: 'Montserrat-Medium',
-    color: colors.muted,
+    color: colors.white,
   },
   TotalItemText: {
-    fontSize: 13,
-    fontFamily: 'Montserrat-Medium',
-    // color: colors.muted,
+    fontSize: 14,
+    fontFamily: 'Montserrat-Bold',
+    color: colors.white,
   },
   orderSummaryContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.dark,
     borderRadius: 10,
     padding: 10,
     maxHeight: 220,
     width: "100%",
-    marginBottom: 5,
+    marginVertical: 10,
   },
   bottomContainer: {
     backgroundColor: colors.white,
@@ -363,7 +405,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-    backgroundColor: colors.white,
+    backgroundColor: colors.semi,
     padding: 10,
     borderRadius: 10,
 
@@ -377,7 +419,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat-SemiBold',
   },
   secondarytextMedian: {
-    color: colors.muted,
+    color: colors.white,
     fontSize: 15,
     fontFamily: 'Montserrat-SemiBold',
   },
@@ -399,6 +441,16 @@ const styles = StyleSheet.create({
   thriftedQuantitySm: {
     fontSize: 11,
     fontFamily: 'Montserrat-Medium',
+    color: colors.black,
+    marginTop: 2,
+    padding: 5,
+    borderRadius: 10,
+    backgroundColor: colors.primary,
+  },
+  thriftedQuantitySm2: {
+    fontSize: 13,
+    
+    fontFamily: 'Montserrat-Bold',
     color: colors.black,
     marginTop: 2,
     padding: 5,

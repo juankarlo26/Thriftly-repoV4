@@ -249,8 +249,13 @@ const ProductDetailScreen = ({ navigation, route }) => {
               <Text style={styles.priceText}>₱ {product?.price}</Text>
             </View>
             <View style={styles.infoButtonContainer}>
+            
             </View>
             <View style={styles.productDescriptionContainer}>
+              <Text style={styles.thriftedQuantitySm}>Thriftable</Text>
+            </View>
+            <View style={styles.productDescriptionContainer}>
+              
               <Text style={styles.secondaryTextSm}>Description:</Text>
               <Text style={styles.primaryText2}>{product?.description}</Text>
             </View>
@@ -280,14 +285,14 @@ const ProductDetailScreen = ({ navigation, route }) => {
                 </TouchableOpacity>
               </View>
               <View style={styles.ThriftePriceContainer}>
-              <CustomInput
+              {/* <CustomInput
             value={price}
             setValue={setPrice}
             placeholder={"Thrifted Price"}
             keyboardType={"number-pad"}
             placeholderTextColor={colors.muted}
             radius={15}
-          />
+          /> */}
 
               </View>
 
@@ -444,7 +449,7 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-end",
+    justifyContent: "flex-start",
   },
   wishlistButtonContainer: {
     height: 50,
@@ -626,5 +631,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Montserrat-SemiBold',
     color: colors.black,
+  },
+  thriftedQuantitySm: {
+    fontSize: 14,
+    fontFamily: 'Montserrat-Medium',
+    color: colors.black,
+    marginTop: 2,
+    padding: 5,
+    borderRadius: 10,
+    backgroundColor: colors.primary,
   },
 });

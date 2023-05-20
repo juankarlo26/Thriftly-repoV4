@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useState, useEffect } from "react";
+import { MaterialIcons } from "@expo/vector-icons";
 import { colors } from "../../constants";
 
 function getTime(date) {
@@ -56,7 +57,7 @@ const OrderList = ({ item, onPress }) => {
     <View style={styles.container}>
       <View style={styles.innerRow}>
         <View>
-          <Text style={styles.primaryText}>Order # {item?.orderId}</Text>
+          <Text style={styles.primaryText}>Tracking Order: #{item?.orderId}</Text>
         </View>
         <View style={styles.timeDateContainer}>
           <Text style={styles.secondaryTextSm}>
@@ -72,18 +73,27 @@ const OrderList = ({ item, onPress }) => {
       )}
       {item?.user?.email && (
         <View style={styles.innerRow}>
-          <Text style={styles.secondaryText}>{item?.user?.email} </Text>
+          {/* <Text style={styles.secondaryText}>{item?.user?.email} </Text> */}
         </View>
       )}
       <View style={styles.innerRow}>
         <Text style={styles.secondaryText}>Quantity : {quantity}</Text>
-        <Text style={styles.secondaryText2}> ₱ {totalCost}</Text>
+
       </View>
-      <View style={styles.innerRow}>
-        <TouchableOpacity style={styles.detailButton} onPress={onPress}>
-          <Text style={styles.detailButtonText}>Details</Text>
-        </TouchableOpacity>
+      <View style={styles.innerRow}>   
+        <Text style={styles.secondaryText2}> Total: ₱{totalCost}</Text>
         <Text style={styles.thriftedQuantitySm}>{item?.status}</Text>
+        <Text style={styles.secondaryText2}> </Text>
+        <TouchableOpacity style={styles.detailButton} onPress={onPress}>
+        <View style={styles.IconContainer2}>
+            <MaterialIcons
+              name="arrow-forward-ios"
+              size={17}
+              color={colors.black}
+            />
+          </View>
+        </TouchableOpacity>
+        
       </View>
     </View>
   );
@@ -99,7 +109,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "auto",
-    backgroundColor: colors.white,
+    backgroundColor: colors.semi,
     borderRadius: 10,
     padding: 10,
     marginBottom: 10,
@@ -114,22 +124,22 @@ const styles = StyleSheet.create({
   },
   primaryText: {
     fontSize: 15,
-    color: colors.dark,
+    color: colors.white,
     fontFamily: 'Montserrat-SemiBold',
   },
   secondaryTextSm: {
     fontSize: 11,
-    color: colors.muted,
+    color: colors.semiGray,
     fontFamily: 'Montserrat-SemiBold',
   },
   secondaryText: {
     fontSize: 14,
-    color: colors.muted,
+    color: colors.semiGray,
     fontFamily: 'Montserrat-Medium',
   },
   secondaryText2: {
     fontSize: 14,
-    color: colors.black,
+    color: colors.white,
     fontFamily: 'Montserrat-SemiBold',
   },
   timeDateContainer: {
@@ -143,12 +153,12 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 20,
     borderWidth: 1,
     padding: 5,
     borderColor: colors.muted,
     color: colors.muted,
-    width: 100,
+    width: 40,
   },
   detailButtonText: {
     fontSize: 14,
@@ -163,5 +173,13 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 10,
     backgroundColor: colors.primary,
+  },
+  IconContainer2: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.white,
+    padding: 5,
+    borderRadius: 15,
   },
 });

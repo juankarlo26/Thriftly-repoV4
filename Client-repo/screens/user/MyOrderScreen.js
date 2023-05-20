@@ -122,9 +122,10 @@ const MyOrderScreen = ({ navigation, route }) => {
         </TouchableOpacity>
        
         <Text style={styles.primaryText}>My Orders</Text>
-        <TouchableOpacity onPress={() => handleOnRefresh()}>
+        <Text style={styles.primaryText}></Text>
+        {/* <TouchableOpacity onPress={() => handleOnRefresh()}>
           <Ionicons name="cart-outline" size={30} color={colors.primary} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <View style={styles.screenNameContainer}>
         <View>
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirecion: "row",
-    backgroundColor: colors.light,
+    backgroundColor: colors.dark,
     alignItems: "center",
     justifyContent: "flex-start",
     flex: 1,
@@ -239,6 +240,7 @@ const styles = StyleSheet.create({
   primaryText: {
     fontSize: 20,
     fontFamily: 'Montserrat-SemiBold',
+    color: colors.white,
     
   },
 });
