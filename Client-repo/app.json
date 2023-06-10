@@ -14,7 +14,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -24,7 +26,9 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.Thriftly",
-      "permissions": ["android.permission.RECORD_AUDIO"]
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -39,7 +43,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "23e244b4-647a-421d-a4dd-a2efb62dc5b0"
+        "projectId": "2ed33cad-34ff-4e4b-ae70-04ebc38c0da9"
       }
     }
   }

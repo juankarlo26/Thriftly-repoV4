@@ -72,6 +72,12 @@ const UserProfileScreen = ({ navigation, route }) => {
           iconName={"md-heart-outline"}
           onPress={() => navigation.navigate("mywishlist", { user: userInfo })}
         />
+          <OptionList
+          text={"About Us"}
+          Icon={Ionicons}
+          iconName={"information-circle-outline"}
+          onPress={() => navigation.navigate("aboutus", { user: userInfo })}
+        />
         {/* !For future use --- */}
         {/* <OptionList
           text={"Settings"}

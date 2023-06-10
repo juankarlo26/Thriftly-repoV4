@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Splash from "../screens/auth/Splash";
 import ForgetPasswordScreen from "../screens/auth/ForgetPasswordScreen";
 import UpdatePasswordScreen from "../screens/profile/UpdatePasswordScreen";
+import AboutUsScreen from "../screens/profile/AboutUsScreen";
 import MyAccountScreen from "../screens/profile/MyAccountScreen";
 import AddProductScreen from "../screens/admin/AddProductScreen";
 import DashboardScreen from "../screens/admin/DashboardScreen";
@@ -42,6 +43,7 @@ const Routes = () => {
         <Stack.Screen name="signup" component={SignupScreen} />
         <Stack.Screen name="forgetpassword" component={ForgetPasswordScreen} />
         <Stack.Screen name="updatepassword" component={UpdatePasswordScreen} />
+        <Stack.Screen name="aboutus" component={AboutUsScreen} />
         <Stack.Screen name="myaccount" component={MyAccountScreen} />
         <Stack.Screen name="mywishlist" component={MyWishlistScreen} />
         <Stack.Screen name="dashboard" component={DashboardScreen} />
